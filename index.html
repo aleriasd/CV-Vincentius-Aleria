@@ -3,367 +3,444 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV | Vincentius Aleria W.</title>
-
+    <title>CV - Vincentius Aleria</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
-        /* --- Warna & Font (Discord/Modern) --- */
-        :root {
-            --color-bg: #313338; 
-            --color-sidebar: #2B2D31; 
-            --color-frame: #383A40; 
-            --color-text: #DBDEE1;
-            --color-text-dim: #949BA4;
-            --color-accent: #5865F2;
-            --color-white: #FFFFFF;
-            --color-border: #44474D;
-            
-            --header-height: 50px;
-            --nav-width: 200px;
-            --profile-width: 320px;
+        /* --- Global Styles (Discord Theme) --- */
+        html {
+            scroll-behavior: smooth;
         }
-
-        /* --- Global Reset & Body (Menggunakan GRID) --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: var(--color-bg);
-            color: var(--color-text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #36393f;
+            color: #dcddde;
+            margin: 0;
+            padding: 0;
             line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 40px;
+            background-color: #2f3136;
+            border-radius: 8px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        /* [DIUBAH] Konten utama dibungkus untuk layout desktop */
+        .content {
+            flex-grow: 1; /* Akan digunakan di layout desktop */
+        }
+
+
+        /* === [DEFAULT] Mobile Tab Navigation (Atas) === */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #40444b;
             
-            /* --- PENTING: Struktur GRID Utama --- */
-            display: grid;
-            grid-template-columns: var(--nav-width) 1fr var(--profile-width); /* 3 Kolom */
-            grid-template-rows: 1fr; /* 1 Baris */
-            min-height: 100vh;
-        }
-        
-        /* --- 1. Sidebar Kiri (Navigation) --- */
-        #nav-sidebar {
-            grid-column: 1 / 2; /* Kolom 1 */
-            background-color: var(--color-sidebar);
-            position: sticky; 
+            position: sticky;
             top: 0;
-            height: 100vh;
-            padding-top: 20px;
-            border-right: 1px solid #232428;
-            overflow-y: auto;
+            background-color: #2f3136;
+            padding-top: 15px;
+            z-index: 10;
+
+            overflow-x: auto;
+            white-space: nowrap;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
         
-        #nav-sidebar .logo { font-size: 20px; font-weight: bold; color: var(--color-white); text-align: center; padding: 10px 0 30px; display: block; }
-        #nav-sidebar ul { list-style: none; padding: 0 15px; }
-        #nav-sidebar ul li a {
-            display: block; text-decoration: none; color: var(--color-text-dim);
-            font-size: 15px; padding: 10px 15px; border-radius: 4px; margin-bottom: 5px;
-            transition: all 0.2s ease;
-        }
-        #nav-sidebar ul li a:hover, #nav-sidebar ul li a.active {
-            background-color: var(--color-frame); color: var(--color-white);
+        .tabs::-webkit-scrollbar {
+            display: none;
         }
 
-        /* --- 2. Konten Utama (Middle Column) --- */
-        #content-wrapper {
-            grid-column: 2 / 3; /* Kolom 2 */
-            overflow-y: auto;
-            padding: 0 30px; /* Padding horizontal */
+        .tabs a {
+            display: block;
+            flex-shrink: 0;
+            padding: 8px 15px;
+            background-color: #40444b;
+            color: #dcddde;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .tabs a:hover {
+            background-color: #4f545c;
+            text-decoration: none;
         }
         
-        #content-wrapper > * {
-            padding-top: 40px; /* Jarak untuk setiap section */
-            padding-bottom: 40px;
-            border-bottom: 1px solid var(--color-border);
+        /* [DEFAULT] Mobile Scroll Target Offset */
+        .scroll-target {
+            scroll-margin-top: 80px;
         }
 
-        /* Header (Judul Section) - STICKY di Kolom 2 */
-        header {
-            grid-column: 2 / 3; /* Kolom 2 */
-            background-color: var(--color-sidebar);
-            border-bottom: 1px solid var(--color-border);
-            padding: 0 30px;
-            position: sticky; 
-            top: 0; /* Nempel di atas kolom konten */
-            z-index: 99;
-            height: var(--header-height);
+
+        /* --- Typography --- */
+        h1 {
+            color: #ffffff;
+            font-size: 2.5em;
+            font-weight: 700;
+            margin: 0 0 5px 0;
+        }
+
+        .header-sub {
+            color: #b9bbbe;
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #40444b;
+            padding-bottom: 25px;
+        }
+
+        h2 {
+            color: #ffffff;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.1em;
+            border-bottom: 2px solid #40444b;
+            padding-bottom: 10px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        h2 i {
+            margin-right: 10px;
+            color: #b9bbbe;
+        }
+
+        h3 {
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 1.25em;
+            margin: 0 0 5px 0;
+        }
+
+        h4 {
+            color: #00a8fc;
+            font-weight: 600;
+            font-style: normal;
+            font-size: 1.1em;
+            margin: 0 0 10px 0;
+        }
+
+        a {
+            color: #00a8fc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* --- Lists (Experience & Skills) --- */
+        ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .skills-list {
+            list-style-type: none;
+            padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skills-list li {
+            background-color: #2f3136;
+            color: #dcddde;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        
+        .card {
+            background-color: #40444b;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .date {
+            font-size: 0.9em;
+            color: #72767d;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .contact-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .contact-list li {
             display: flex;
             align-items: center;
+            margin-bottom: 10px;
+            font-size: 1.05em;
         }
-        
-        header h4 { color: var(--color-white); font-size: 18px; font-weight: bold; }
-
-        /* --- 3. Sidebar Kanan (Profile Card) --- */
-        #profile-sidebar {
-            grid-column: 3 / 4; /* Kolom 3 */
-            background-color: var(--color-bg);
-            padding: 20px;
-            position: sticky; 
-            top: 0;
-            height: 100vh;
-            overflow-y: auto;
-            border-left: 1px solid var(--color-border);
-            padding-top: calc(var(--header-height) + 20px); /* Jarak dari header */
-        }
-        
-        #profile-card {
-            background-color: var(--color-sidebar);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: left;
-        }
-        
-        .profile-title { color: var(--color-white); font-size: 20px; margin-bottom: 5px; }
-        .profile-subtitle { color: var(--color-text-dim); font-size: 14px; margin-bottom: 20px; }
-        .profile-img-container { text-align: center; margin-bottom: 15px; }
-        .profile-img-container img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--color-bg); }
-        .profile-section h4 { color: var(--color-accent); font-size: 16px; font-weight: bold; border-bottom: 1px solid var(--color-border); padding-bottom: 5px; margin-top: 20px; margin-bottom: 10px; }
-        .contact-item { font-size: 14px; margin-bottom: 10px; }
-        .contact-item a { color: var(--color-text); text-decoration: none; word-break: break-all; }
-        .contact-item a:hover { color: var(--color-accent); text-decoration: underline; }
-
-
-        /* --- Style Card & List (Untuk Content) --- */
-        h2 { font-size: 28px; color: var(--color-white); margin-bottom: 25px; padding-bottom: 5px; border-bottom: 2px solid var(--color-border); }
-        .card { background-color: var(--color-frame); border-radius: 8px; padding: 25px; margin-bottom: 25px; }
-        h3 { font-size: 20px; color: var(--color-accent); padding-bottom: 5px; margin-bottom: 15px; }
-        .experience-item { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px dashed rgba(255, 255, 255, 0.1); }
-        .experience-item:last-child { border-bottom: none; }
-        .experience-item strong { color: var(--color-white); font-size: 16px; display: block; }
-        .experience-item span { color: var(--color-text-dim); font-size: 14px; display: block; margin-top: 2px; }
-        .experience-item i { color: var(--color-text-dim); font-style: normal; font-size: 12px; }
-        .tag-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
-        .tag-list li { background-color: var(--color-accent); color: var(--color-white); padding: 6px 12px; border-radius: 4px; font-size: 13px; }
-
-        /* --- Footer --- */
-        #footer {
-            grid-column: 1 / 4; /* Penuhi semua 3 kolom */
-            width: 100%;
+        .contact-list li i {
+            margin-right: 15px;
+            color: #b9bbbe;
+            width: 20px;
             text-align: center;
-            padding: 15px 0;
-            background-color: var(--color-sidebar);
-            color: var(--color-text-dim);
-            font-size: 12px;
+        }
+        
+        
+        /* --- [DEFAULT] Mobile Responsiveness --- */
+        @media (max-width: 991px) {
+            body {
+                background-color: #2f3136;
+            }
+            .container {
+                margin: 0;
+                padding: 25px;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1em;
+            }
+            .card {
+                padding: 20px;
+            }
+        }
+        
+        /* === [BARU] Desktop Layout (Tab di Kiri) === */
+        /* Ini hanya akan aktif jika lebar layar 992px atau lebih */
+        @media (min-width: 992px) {
+            .container {
+                display: flex; /* Mengaktifkan mode 2 kolom */
+                gap: 30px; /* Jarak antara nav dan konten */
+                max-width: 1200px; /* Layout bisa lebih lebar di desktop */
+                padding: 50px;
+            }
+
+            .tabs {
+                /* Mengubah dari bar horizontal ke vertikal */
+                flex-direction: column; 
+                width: 220px; /* Lebar nav kiri */
+                flex-shrink: 0; /* Mencegah nav menyusut */
+                
+                /* Mengganti sticky-top menjadi sticky-side */
+                position: sticky;
+                top: 50px; /* Sesuaikan dengan padding container */
+                height: calc(100vh - 100px); /* Tinggi nav = tinggi layar - padding */
+                
+                /* Reset style mobile */
+                overflow-x: hidden;
+                overflow-y: auto; /* Bisa di-scroll jika tab terlalu banyak */
+                border-bottom: none;
+                border-right: 1px solid #40444b; /* Garis pemisah vertikal */
+                padding-right: 20px;
+                padding-top: 0;
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
+
+            .tabs a {
+                margin-bottom: 8px; /* Jarak antar tab */
+            }
+
+            .content {
+                flex: 1; /* Konten mengisi sisa ruang */
+                min-width: 0; /* Perbaikan bug flexbox */
+            }
+
+            /* Mengubah offset scroll di desktop */
+            .scroll-target {
+                scroll-margin-top: 30px; 
+            }
         }
     </style>
 </head>
 <body>
-    
-    <nav id="nav-sidebar">
-        <a href="#welcome" class="logo">VAW</a>
-        <ul>
-            <li><a href="#summary">Summary</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact-info">Contact</a></li>
-        </ul>
-    </nav>
-    
-    <header>
-        <div class="container" style="max-width: 100%;">
-            <h4 id="current-section-title">Welcome</h4>
-        </div>
-    </header>
 
-    <div id="content-wrapper">
+    <div class="container">
         
-        <section id="welcome" style="padding-top: 50px; padding-bottom: 50px; border-bottom: none;">
-            <div class="card" style="text-align: center; background-color: var(--color-frame);">
-                <h1 style="font-size: 40px; margin-bottom: 5px;">VINCENTIUS ALERIA W.</h1>
-                <h2 style="font-size: 24px; margin-bottom: 15px;">Graphic Designer | Creative Multimedia Student</h2>
-                <p style="color: var(--color-text-dim);">Jakarta Selatan, Indonesia</p>
-            </div>
-        </section>
+        <nav class="tabs">
+            <a href="#summary">Summary</a>
+            <a href="#contact">Contact</a>
+            <a href="#experience">Experience</a>
+            <a href="#organization">Organization</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skill</a>
+        </nav>
         
-        <section id="summary">
-            <h2>PROFESSIONAL SUMMARY</h2>
-            <div class="card">
-                <h3>Ringkasan</h3>
-                <p style="font-size: 15px; color: var(--color-text); margin-bottom: 15px; font-style: italic;">
-                    "If you're not a good shot today, don't worry. There are other ways to be useful." - Sova (Valorant Character)
+        <main class="content">
+            
+            <header>
+                <h1>Vincentius Aleria</h1>
+                <p class="header-sub">
+                    Students of || Faculty of Engineering, University of Indonesia || CEP-CCIT FTUI || Bachelor's Degree, Digital Creative Multimedia
                 </p>
-                <p style="font-size: 15px; color: var(--color-text);">
-                    Saya adalah mahasiswa di **CEP-CCIT FTUI**, Fakultas Teknik, Universitas Indonesia. Saya memiliki keahlian di bidang multimedia, termasuk **graphic design, video editing, motion graphics**, dan bidang kreatif terkait. Saya memiliki etos kerja yang tinggi, mampu bekerja dalam tim, dan dapat bekerja di bawah tekanan (multitasking).
+            </header>
+
+            <section id="summary" class="summary scroll-target">
+                <h2><i class="fa-solid fa-user-pen"></i>Summary</h2>
+                <p>
+                    Hello, I'm Vincentius Aleria. I was born in Cilacap, Central Java, Indonesia and live in South Jakarta. Currently studying at CCIT, Faculty of Engineering, University of Indonesia, majoring in Digital Media Creative. I am a creative individual with skills in graphic design and video editing, experienced in using Adobe Photoshop, After Effects, and Premiere Pro. I enjoy creating visually appealing and purposeful content tailored to audience needs.
                 </p>
-            </div>
-        </section>
-        
-        <section id="skills">
-            <h2>TOP SKILLS</h2>
-            <div class="card">
-                <ul class="tag-list">
-                    <li>Design Graphic & Motion Graphic</li>
-                    <li>Multimedia & Video Editing</li>
-                    <li>Event Logistics & Coordination</li>
-                    <li>Teamwork & Multitasking</li>
-                    <li>Working under Pressure</li>
-                    <li>Adobe Photoshop / Premiere Pro / After Effects</li>
-                    <li>BRIGADE UI Member</li>
-                    <li>D'FUTURO Volunteer</li>
-                    <li>Certificate of Competence</li>
-                </ul>
-            </div>
-        </section>
+            </section>
 
-        <section id="experience">
-            <h2>EMPLOYMENT HISTORY</h2>
-            <div class="card">
-                <div class="experience-item">
-                    <strong>Staff of Design</strong>
-                    <span>UI Esports Club | Aug 2025 - Present</span>
-                    <p>Contributed as a member of the Design Division in the official UI Esports student organization. Created and designed visual assets, event branding, and promotional content.</p>
+            <section id="contact" class="contact scroll-target">
+                <h2><i class="fa-solid fa-address-book"></i>Contact</h2>
+                <div class="card">
+                    <ul class="contact-list">
+                        <li><i class="fa-solid fa-mobile-screen"></i> +6285747421918</li>
+                        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:aleriasd@gmail.com">aleriasd@gmail.com</a></li>
+                        <li><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/vincentius-aleria" target="_blank">linkedin.com/in/vincentius-aleria</a></li>
+                        <li><i class="fa-solid fa-folder-open"></i> <a href="https://drive.google.com/drive/folders/1T5MhbixceUsuV9SyMCtJU004vJc4bAHv" target="_blank">Lihat Portfolio di Google Drive</a></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="experience" class="experience scroll-target">
+                <h2><i class="fa-solid fa-briefcase"></i>Experience</h2>
+
+                <div class="card">
+                    <h3>UI Esports Club</h3>
+                    <h4>Staff of Design</h4>
+                    <p class="date">August 2025 - Present (3 months)</p>
+                    <ul>
+                        <li>Contributed as a member of the Design Division in the official UI Esports student organization.</li>
+                        <li>Created and designed visual assets, event branding, and promotional content for esports-related activities and tournaments.</li>
+                        <li>Collaborated with other divisions to support UIESC events and community growth.</li>
+                        <li>Gained experience in graphic design, branding, and teamwork within a student organization.</li>
+                    </ul>
                 </div>
 
-                <div class="experience-item">
-                    <strong>Volunteer Staff of Publication, Documentation, and Design - PEMIRA</strong>
-                    <span>Pemira CSS FTUI | Present</span>
-                    <p>Assisted in the Public Relations and Documentation Division for the CCIT FTUI Student Election (PEMIRA). Designed visual content and supported publication strategies.</p>
+                <div class="card">
+                    <h3>CCIT Students Society (CSS) FTUI</h3>
+                    <h4>Volunteer Staff of Publication, Documentation, and Design - PEMIRA CSS FTUI</h4>
+                    <p class="date">September 2025 - Present (2 months)</p>
+                    <ul>
+                        <li>Assisted in the Public Relations and Documentation Division for the CCIT FTUI Student Election (PEMIRA).</li>
+                        <li>Designed visual content, managed documentation, and supported publication strategies to enhance student engagement.</li>
+                        <li>Collaborated with fellow volunteers to ensure smooth communication and event branding.</li>
+                    </ul>
                 </div>
+
+                <div class="card">
+                    <h3>Brigade UI</h3>
+                    <h4>Member</h4>
+                    <p class="date">September 2024 - Present (1 year 2 months)</p>
+                    <ul>
+                        <li>Active member of Brigade UI, a student organization under Universitas Indonesia that focuses on social and political awareness.</li>
+                        <li>Participating in internal discussions, training sessions, and community engagement initiativesto develop critical thinking and social activism mindset.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>UI For School</h3>
+                    <h4>Executive Board of Publication, Documentation, and Design</h4>
+                    <p class="date">September 2025 - October 2025 (2 months)</p>
+                    <ul>
+                        <li>UIPhoria is a program that serves as the main gateway for new students to get to know campus life at the University of Indonesia more closely. Through a series of inspiring and interactive activities, UIPhoria aims to provide a memorable first experience.</li>
+                        <li>Contributed as part of the organizing committee for UIPhoria, a flagship program introducing new students to campus life at Universitas Indonesia.</li>
+<li>Managed publication, documentation, and design tasks to ensure effective communication and event branding.</li>
+                        <li>Collaborated with cross-division teams to deliver inspiring and interactive activities for first-year students.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>D•FUTURO</h3>
+                    <h4>Volunteer Logistics Staff</h4>
+                    <p class="date">November 2024 - November 2024 (1 month) | Jakarta Raya, Indonesia</p>
+                    <ul>
+                        <li>Assisted the organizing committee as part of the logistics team during the D’FUTURO Futurist Summit 2024.</li>
+                        <li>Supported the preparation and execution of event operations, including venue setup and client live streaming arrangements.</li>
+                        <li>Collaborated with fellow volunteers to ensure smooth event flow.</li>
+                        <li>Developed skills in event logistics, teamwork, and problem-solving.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Lomba Kompetensi Siswa SMK Jakarta Pusat II</h3>
+                    <h4>Finalist – Lomba Kompetensi Siswa (LKS) SMK, Graphic Design Technology</h4>
+                    <p class="date">August 2023 - August 2023 (1 month) | Jakarta Raya, Indonesia</p>
+                    <ul>
+                        <li>Represented SMK Sint Joseph in the Graphic Design Technology field.</li>
+                        <li>Enhanced design skills using professional graphic design software.</li>
+                        <li>Achieved 5th place (Honorable Mention II) at the Jakarta Pusat II regional level.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>KapanLagi Youniverse</h3>
+                    <h4>Multimedia Staff - Intership</h4>
+                    <p class="date">January 2023 - March 2023 (3 months) | Jakarta Raya, Indonesia</p>
+                    <ul>
+                        <li>Assisted in setting up and managing lighting and camera equipment for studio and on-site projects.</li>
+                        <li>Provided technical support and prepared live streaming setups for clients.</li>
+                        <li>Ensured smooth production workflow in collaboration with the multimedia and creative teams.</li>
+                        <li>Gained practical experience in multimedia production, equipment handling, and live broadcast support.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="organization" class="organization scroll-target">
+                <h2><i class="fa-solid fa-users"></i>Organization</h2>
                 
-                <div class="experience-item">
-                    <strong>Executive Board of Publication, Documentation, and Design</strong>
-                    <span>UIPhoria | Sep 2025 - Oct 2025</span>
-                    <p>Contributed as part of the organizing committee for UIPhoria. Managed publication, documentation, and design tasks to ensure effective communication and event branding.</p>
+                <div class="card">
+                    <h3>Universitas Indonesia Esport Club (UKM E-Sport Universitas Indonesia)</h3>
+                    <h4>Design Staff</h4>
+                    <p class="date">Agu 2025 - Sekarang</p>
                 </div>
 
-                <div class="experience-item">
-                    <strong>Multimedia Staff - Internship</strong>
-                    <span>KapanLagi Youniverse | Jan 2023 - Mar 2023 (3 months)</span>
-                    <p>Assisted in setting up and managing lighting and camera equipment for studio and on-site projects. Provided technical support and prepared live streaming setups for clients.</p>
+                <div class="card">
+                    <h3>BRIGADE UI</h3>
+                    <h4>Member</h4>
+                    <p class="date">Okt 2024 - Sekarang</p>
+                    <p>As a tactical organ, Brigade UI is responsible for action and propaganda, which may include socio-political campaigns, advocacy, publication of opinions or issues, and other similar activities within the UI environment.</p>
                 </div>
-                
-                <div class="experience-item">
-                    <strong>Finalist – LKS Graphic Design Technology</strong>
-                    <span>Lomba Kompetensi Siswa SMK Jakarta Pusat II | Aug 2023</span>
-                    <p>Achieved 5th place (Honorable Mention II) at the Jakarta Pusat II regional level.</p>
+            </section>
+
+            <section id="education" class="education scroll-target">
+                <h2><i class="fa-solid fa-graduation-cap"></i>Education</h2>
+
+                <div class="card">
+                    <h3>University of Indonesia</h3>
+                    <p style="margin:0;">
+                        Faculty of Engineering<br>
+                        CEP-CCIT FTUI<br>
+                        Bachelor's Degree, Digital Creative Multimedia
+                    </p>
                 </div>
-            </div>
-        </section>
-        
-        <section id="education" class="section-padding">
-            <h2>EDUCATION</h2>
-            <div class="card">
-                <div class="experience-item">
-                    <strong>Faculty of Engineering, Universitas Indonesia</strong>
-                    <span>Creative Multimedia, CEP-CCIT FTUI</span>
-                    <i>Aug 2024 - Present</i>
+            </section>
+
+            <section id="skills" class="skills scroll-target">
+                <h2><i class="fa-solid fa-lightbulb"></i>Skill</h2>
+                <div class="card">
+                    <ul class="skills-list">
+                        <li>Design Graphic</li>
+                        <li>Motion Graphic</li>
+                        <li>Teamwork</li>
+                        <li>Multitasking</li>
+                        <li>Working under pressure</li>
+                    </ul>
                 </div>
-            </div>
-        </section>
-        
-        <section id="contact-info" class="section-padding" style="border-bottom: none;">
-            <h2 style="border-bottom: none;">Contact Details</h2>
-            <div class="card">
-                 <div class="contact-item">
-                    <strong>Email:</strong> <a href="mailto:aleriasd@gmail.com">aleriasd@gmail.com</a>
-                 </div>
-                 <div class="contact-item">
-                    <strong>Phone:</strong> <a href="tel:+6285747421918">+62 857 4742 1918</a>
-                 </div>
-                 <div class="contact-item">
-                    <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/vincentiusaleria" target="_blank">linkedin.com/in/vincentiusaleria</a>
-                 </div>
-            </div>
-        </section>
-        
+            </section>
 
-    </div>
-    
-    <div id="profile-sidebar">
-        <div id="profile-card" class="card">
-            <div class="profile-img-container">
-                <img src="https://via.placeholder.com/100x100.png?text=VA" alt="Profile Picture">
-            </div>
-            <div class="profile-title">Vincentius Aleria W.</div>
-            <div class="profile-subtitle">Graphic Designer & Student</div>
-
-            <div class="profile-section">
-                <h4>PERSONAL DETAILS</h4>
-                <p class="contact-item">📍 Jakarta Selatan, Indonesia</p>
-                <p class="contact-item">👥 **Soba**t Sova (Valorant Player)</p>
-            </div>
-            
-            <div class="profile-section">
-                <h4>LANGUAGES</h4>
-                <ul class="tag-list">
-                     <li>Indonesia (Native)</li>
-                     <li>English (Intermediate)</li>
-                </ul>
-            </div>
-            
-        </div>
-    </div>
-        
-</main>
-
-<div id="footer">
-    <p>CV Dibuat oleh Vincentius Aleria W. | Bachelor's Degree, Digital Creative Multimedia</p>
-</div>
-    
-<script>
-    // --- LOGIKA SCROLL/NAVIGASI JAVASCRIPT ---
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('#nav-sidebar ul li a');
-    const headerTitle = document.getElementById('current-section-title');
-    const HEADER_HEIGHT = 50;
-
-    const updateActiveLink = () => {
-        let scrollY = window.scrollY;
-
-        sections.forEach(sec => {
-            let offset = sec.offsetTop - HEADER_HEIGHT - 1; // Offset dari header
-            let height = sec.offsetHeight;
-            let id = sec.getAttribute('id');
-            
-            // Logika highlight link navigasi yang sesuai
-            if (scrollY >= offset && scrollY < offset + height) {
-                navLinks.forEach(links => {
-                    links.classList.remove('active');
-                    if (links.getAttribute('href') === '#' + id) {
-                        links.classList.add('active');
-                        // Update judul header yang di atas
-                        headerTitle.textContent = id.charAt(0).toUpperCase() + id.slice(1).replace('s', ''); 
-                        if (id === 'contact-info') headerTitle.textContent = 'Contact';
-                    }
-                });
-            }
-        });
-        
-        // Logika untuk highlight header saat di paling atas
-        if (scrollY < 10) {
-            headerTitle.textContent = "Welcome";
-            navLinks.forEach(links => links.classList.remove('active'));
-            document.querySelector('#nav-sidebar ul li a[href="#summary"]').classList.add('active'); // Highlight Summary di awal
-        }
-    };
-    
-    window.addEventListener('scroll', updateActiveLink);
-    
-    // Atur agar link navigasi jalan
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                const offsetTop = targetElement.offsetTop - HEADER_HEIGHT;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-                // Update link secara instan saat diklik (CSS akan handle sisanya)
-            }
-        });
-    });
-    
-    // Panggil sekali saat load
-    document.addEventListener('DOMContentLoaded', updateActiveLink);
-</script>
-
-</body>
+        </main> </div></body>
 </html>
